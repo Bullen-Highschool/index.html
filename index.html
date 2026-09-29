@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bullen General Senior Secondary School</title>
+    <style>
+        /* Base Styles & Theme Colors */
+        :root {
+            --primary: #0a3d62;
+            --secondary: #3c6382;
+            --accent: #f6b93b;
+            --light: #f8f9fa;
+            --dark: #1e272e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        header {
+            background-color: var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Sections General Styling */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Home / Hero Section */
+        #home {
+            background: linear-gradient(rgba(10, 61, 98, 0.85), rgba(60, 99, 130, 0.85)), url('https://unsplash.com') no-repeat center center/cover;
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 2rem;
+            max-width: 100%;
+        }
+
+        #home h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+      #home p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.2s, background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #e5a928;
+            transform: translateY(-2px);
+        }
+
+        /* About Us Section */
+        #about {
+            background-color: white;
+            border-radius: 8px;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+/* Announcements Section */
+        .announcement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .announcement-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary);
+        }
+
+        .date {
+            color: var(--secondary);
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        input, textarea {
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        /* Learn More Modal/Section */
+        #learn-more {
+            background-color: #eaeff2;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        /* Footer & Developer Credits */
+        footer {
+            background-color: var(--dark);
+            color: #a4b0be;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        } 
+        dev-credit {
+            color: var(--accent);
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; gap: 1rem; }
+            .about-content, .contact-container, .features-grid { grid-template-columns: 1fr; }
+            #home h1 { font-size: 2rem; }
+        }
+    </style> 
+<style>
+    /* የሰበር ዜና ማሳያ ባነር */
+    .news-banner {
+        background-color: #d9534f;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        width: 100%;
+    }
+    .admin-container {
+        max-width: 500px;
+        margin: 30px auto;
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        border: 1px solid #ddd;
+    }
+    .admin-container input, .admin-container textarea, .admin-container button {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    .admin-container button {
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .admin-container button:hover { background-color: #0056b3; }
+    .admin-box { display: none; }
+    .error-msg { color: red; font-size: 14px; text-align: center; }
+</style>
+</head>
+
+    <!-- Navigation -->
+    <header>
+        <div class="navbar">
+            <div class="logo">Bullen General Senior Secondary School</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#announcements">Announcements</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#learn-more">Learn More</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home">
+        <h1>Welcome to Bullen General Senior Secondary School</h1>
+        <p>Empowering young minds through academic excellence, innovation, and strong moral foundations for a brighter tomorrow.</p>
+        <a href="#learn-more" class="btn">Explore Our Programs</a>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-content">
+            <div>
+                <h3>Our Mission</h3>
+                <p>To deliver competitive and accessible high-quality secondary education. We foster an environment that inspires critical thinking, scientific curiosity, and discipline among our students.</p>
+                <br>
+                <h3>Our Vision</h3>
+                <p>To build outstanding citizens who are fully prepared to lead and face global challenges while driving local transformation.</p>
+            </div>
+            <div>
+                <h3>Why Choose Bullen GSSS?</h3>
+                <p>Located in the heart of Bullen, we pride ourselves on a rich history of student achievements, dedicated educators, comprehensive science and computer labs, and highly interactive learning experiences.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Announcements Section -->
+    <section id="announcements">
+        <h2 class="section-title">Latest Announcements</h2>
+        <div class="announcement-grid">
+            <div class="announcement-card">
+                <div class="date">October 12, 2026</div>
+                <h3>First Semester Registration</h3>
+                <p>Registration for the new academic semester is now open. All students must submit necessary documents before the upcoming deadline.</p>
+            </div>
+            <div class="announcement-card">
+                <div class="date">September 28, 2026</div>
+                <h3>National Exam Preparations</h3>
+                <p>Tutorial sessions for Grade 12 national examinations will begin this week. Check the library bulletin board for schedules.</p>
+            </div>
+            <div class="announcement-card">
+                <div class="date">September 15, 2026</div>
+                <h3>New Science Lab Launch</h3>
+                <p>We are excited to unveil our newly equipped chemistry and physics facility designed to elevate hands-on scientific discovery.</p>
+            </div>
+        </div> 
+    </section> 
+    <!-- Learn More Section --> 
+<section id="learn-more">
+        <h2 class="section-title">Learn More</h2>
+        <p>Discover the diverse building blocks that define our vibrant academic community.</p>
+        <div class="features-grid">
+            <div class="feature-item">
+                <h3>Academics</h3>
+                <p>A rigorous natural and social sciences curriculum shaped around national standards.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Facilities</h3>
+                <p>Modern classrooms, an updated tech lab, sport grounds, and a resourceful library center.</p> 
+            </div> 
+        </div> 
+</section> 
+<section id="contact"> 
+        <h2 class="section-title">Contact</h2>  
+          <p>Get in touch with Bullen General Senior Secondary School. We welcome your question, feedback, and visits.</p> 
+          <address> 
+              <strong>Address:</strong>Main campus, Bullen, Metekel, Benishangul-Gumuz, Ethiopia<br> 
+              <strong>Phone:</strong>+251</br> 
+              <strong>Email:</strong><a href="mailto:info@bullenschool.edu.et">info@bullenschool.edu.et</a></br>
+               <strong>Office Hours:</strong>Monday to Friday, 8:00AM-5:00PM
+          </address>
+</section> 
+
+
+        
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bullen Senior Secondary School Portal</title>
+    <style>
+        /* Base Variables & Typography */
+        :root {
+            --primary: #007bff;
+            --danger: #d9534f;
+            --success: #28a745;
+            --dark: #24292e;
+            --light: #f8f9fa;
+            --border: #e1e4e8;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+            color: var(--dark);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+      }
+
+        /* 1. Dynamic Breaking News Banner (Top) */
+        .news-marquee-container {
+            background-color: var(--danger);
+            color: #ffffff;
+            padding: 12px 20px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .marquee-wrapper {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .marquee-label {
+            background: #ffffff;
+            color: var(--danger);
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-right: 15px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        #newsText {
+            font-weight: 500;
+            white-space: nowrap;
+            animation: scroll-news 20s linear infinite;
+        }
+
+        @keyframes scroll-news {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Main Page Layout */
+        .main-content {
+            flex: 1;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .hero-section {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        /* 2. Admin Secure Panel (Footer Component) */
+        .admin-auth-card {
+            max-width: 450px;
+            margin: 40px auto 20px auto;
+            padding: 25px;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 8px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .admin-auth-card h3 {
+            margin: 0 0 15px 0;
+            font-size: 18px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .action-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            font-size: 14px;
+        }
+
+      
+         .action-btn:hover { background-color: #0056b3; }
+        .action-btn.success { background-color: var(--success); }
+        .action-btn.success:hover { background-color: #218838; }
+
+        .hidden-node { display: none; }
+        .error-alert { color: var(--danger); font-size: 13px; text-align: center; margin-top: 8px; }
+
+        /* 3. Global Footer with Meta Attributes */
+        footer {
+            background-color: var(--dark);
+            color: #ffffff;
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: auto;
+            border-top: 4px solid var(--primary);
+        }
+
+        .metadata-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            font-size: 14px;
+            color: #bdc3c7;
+        }
+
+        .metadata-item strong { color: #ffffff; }
+
+        .designer-block {
+            border-top: 1px solid #3c4146;
+            padding-top: 15px;
+            font-size: 13px;
+            color: #95a5a6;
+        }
+
+        .designer-highlight {
+            font-weight: 700;
+            color: #ffffff;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. LIVE BREAKING NEWS COMPONENT -->
+    <div class="news-marquee-container">
+        <div class="marquee-wrapper">
+            <span class="marquee-label">📢 ANNOUNCEMENT</span>
+            <div id="newsText">Welcome to the official web portal. Awaiting administrative live bulletin dispatch...</div>
+        </div>
+    </div>
+
+    <!-- MAIN PORTAL BODY -->
+    <div class="main-content">
+        <div class="hero-section">
+            <h2>Fostering Academic Brilliance</h2>
+            <p>Empowering student infrastructure across Home, About Us, Academic Pillars, and Core Directories.</p>
+        </div>
+
+        <!-- SECURE ADMINISTRATIVE HUB -->
+        <div class="admin-auth-card">
+            <h3>Admin Broadcast Gateway</h3>
+            
+            <!-- Secure Pass Verification Section -->
+            <div id="authGate">
+                <div class="form-group">
+                    <input type="password" id="sysAdminKey" placeholder="Enter Secure Administrative Password">
+                </div>
+                <button class="action-btn" onclick="verifyAdminCredentials()">Authenticate Access</button>
+                <p class="error-alert" id="authErrorDisplay"></p>
+            </div>
+
+            <!-- News Injection Control Panel -->
+            <div id="broadcastPanel" class="hidden-node">
+                <p style="color: var(--success); font-weight: bold; margin: 0 0 12px 0;">⚡ Authorization Granted.</p>
+                <div class="form-group">
+                    <textarea id="freshAnnouncementInput" rows="3" placeholder="Compose live rolling update headline..."></textarea>
+                </div>
+                <button class="action-btn success" onclick="publishLiveAnnouncement()">Commit Live Announcement</button>
+            </div> 
+
+        </div>
+    </div> 
+
+
+    <!-- 2 & 3. SYSTEM ATTRIBUTION & SPECIFICATIONS FOOTER -->
+    <footer>
+        <div class="metadata-grid">
+            <div class="metadata-item">
+                <strong>Campus Deployment Location:</strong> Metekel Zone, Region 6, Ethiopia
+            </div>
+            <div class="metadata-item">
+                <strong>System Horizon Build:</strong> v2026.1-Production
+            </div>
+        </div>
+        
+        <div class="designer-block">
+            Application System Architecture, Core Design, and Engineering by:<br>
+            <span class="designer-highlight">Tamirat Birhanu</span>
+            <p style="margin: 5px 0 0 0; font-size: 11px;">© 2026 Bullen General Senior Secondary School. All rights reserved.</p>
+        </div> 
+    </footer>
+
+    <!-- INTERACTIVE DOM CONTROLLER ENGINE -->
+    <script>
+        // System Master Password Mapping Configuration
+        const SECURITY_CREDENTIAL_KEY = "bgsssadmin12345678."; 
+
+        function verifyAdminCredentials() {
+            const injectedKey = document.getElementById("sysAdminKey").value;
+            const errorElement = document.getElementById("authErrorDisplay");
+            const entryGateway = document.getElementById("authGate");
+            const managementDashboard = document.getElementById("broadcastPanel");
+
+            if (injectedKey === SECURITY_CREDENTIAL_KEY) {
+                errorElement.innerText = "";
+                entryGateway.style.display = "none";
+                managementDashboard.classList.remove("hidden-node");
+            } else {
+                errorElement.innerText = "❌ Security Access Revoked: Invalid Password Token.";
+            }
+        }
+
+        function publishLiveAnnouncement() {
+            const rawContentPayload = document.getElementById("freshAnnouncementInput").value;
+            const targetDisplayNode = document.getElementById("newsText"); 
+
+            if (rawContentPayload.trim() !== "") {
+                targetDisplayNode.innerText = rawContentPayload;
+                alert("🚀 Operational Success: Broadcast stream updated globally across the screen frame layout.");
+            } else {
+                alert("Validation Warning: Cannot deploy empty data string onto the announcement stream.");
+            }
+        }
+    </script> 
+</body>
+</html>
