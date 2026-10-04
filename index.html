@@ -277,7 +277,10 @@
     .admin-container button:hover { background-color: #0056b3; }
     .admin-box { display: none; }
     .error-msg { color: red; font-size: 14px; text-align: center; }
-</style>
+</style> 
+<!-- 🌐 Firebase SDK (Libraries) Connection -->
+    <script src="https://gstatic.com"></script>
+    <script src="https://gstatic.com"></script>
 </head>
 
     <!-- Navigation -->
@@ -558,33 +561,36 @@
             <p>Empowering student infrastructure across Home, About Us, Academic Pillars, and Core Directories.</p>
         </div>
 
-        <!-- SECURE ADMINISTRATIVE HUB -->
+        <!-- SECURE ADMINISTRATIVE HUB --> 
         <div class="admin-auth-card">
             <h3>Admin Broadcast Gateway</h3>
-            
-            <!-- Secure Pass Verification Section -->
-            <div id="authGate">
-                <div class="form-group">
-                    <input type="password" id="sysAdminKey" placeholder="Enter Secure Administrative Password">
-                </div>
-                <button class="action-btn" onclick="verifyAdminCredentials()">Authenticate Access</button>
-                <p class="error-alert" id="authErrorDisplay"></p>
+    <!-- 🚨 Red Banner (The latest announcement replaces text here automatically) -->
+    <div class="announcement-banner" id="announcement-screen">
+        Loading announcements...
+    </div>
+
+    <div class="container">
+        <h3>Admin Broadcast Gateway</h3>
+        <form id="broadcastForm">
+            <div class="form-group">
+                <label>New Announcement Text:</label>
+                <input type="text" id="announcementInput" placeholder="Write new announcement here..." required>
             </div>
+            <div class="form-group">
+                <label>Administrative Password:</label>
+                <input type="password" id="adminPassword" placeholder="Enter Secure Password" required>
+            </div>
+            <button type="submit">Authenticate & Publish</button>
+        </form>
 
-            <!-- News Injection Control Panel -->
-            <div id="broadcastPanel" class="hidden-node">
-                <p style="color: var(--success); font-weight: bold; margin: 0 0 12px 0;">⚡ Authorization Granted.</p>
-                <div class="form-group">
-                    <textarea id="freshAnnouncementInput" rows="3" placeholder="Compose live rolling update headline..."></textarea>
-                </div>
-                <button class="action-btn success" onclick="publishLiveAnnouncement()">Commit Live Announcement</button>
-            </div> 
-
+        <h4>📜 Older Announcements History (Archive)</h4>
+        <div class="history-box" id="announcementHistory">
+            <div class="info-item" style="color: gray;">No announcements published yet.</div>
         </div>
-    </div> 
-
-
-    <!-- 2 & 3. SYSTEM ATTRIBUTION & SPECIFICATIONS FOOTER -->
+    </div>
+        </div>
+    
+        <!-- 2 & 3. SYSTEM ATTRIBUTION & SPECIFICATIONS FOOTER -->
     <footer>
         <div class="metadata-grid">
             <div class="metadata-item">
@@ -605,74 +611,7 @@
     <!-- INTERACTIVE DOM CONTROLLER ENGINE -->
     <script>
         // System Master Password Mapping Configuration
-        const SECURITY_CREDENTIAL_KEY = "bgsssadmin12345678."; 
-
-        function verifyAdminCredentials() {
-            const injectedKey = document.getElementById("sysAdminKey").value;
-            const errorElement = document.getElementById("authErrorDisplay");
-            const entryGateway = document.getElementById("authGate");
-            const managementDashboard = document.getElementById("broadcastPanel");
-
-            if (injectedKey === SECURITY_CREDENTIAL_KEY) {
-                errorElement.innerText = "";
-                entryGateway.style.display = "none";
-                managementDashboard.classList.remove("hidden-node");
-            } else {
-                errorElement.innerText = "❌ Security Access Revoked: Invalid Password Token.";
-            }
-        }
-
-        function publishLiveAnnouncement() {
-            const rawContentPayload = document.getElementById("freshAnnouncementInput").value;
-            const targetDisplayNode = document.getElementById("newsText"); 
-
-            if (rawContentPayload.trim() !== "") {
-                targetDisplayNode.innerText = rawContentPayload;
-                alert("🚀 Operational Success: Broadcast stream updated globally across the screen frame layout.");
-            } else {
-                alert("Validation Warning: Cannot deploy empty data string onto the announcement stream.");
-            }
-        }
-    </script> <!-- የ Firebase ማገናኛ (ድግግሞሽ መከላከያ ያለው) -->
-<script type="module">
-  import { initializeApp, getApps, getApp } from "https://gstatic.com";
-  import { 
-    getFirestore, collection, addDoc, getDocs, updateDoc, deleteDoc, doc 
-  } from "https://gstatic.com";
-
-  const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_://firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_://appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
-  };
-
-  // 🔥 ቁልፍ መፍትሄ፡ ቀደም ሲል ተከፍቶ ከነበረ የድሮውን ይጠቀማል እንጂ አዲስ ድጋሚ አይፈጥርም!
-  const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
-  const db = getFirestore(app);
-
-  // ፋንክሽኖቹ ድጋሚ እንዳይፈጠሩ በ window ላይ መጫን
-  if (!window.addData) {
-    window.addData = async function(collectionName, dataObj) {
-      try {
-        const docRef = await addDoc(collection(db, collectionName), dataObj);
-        console.log("መረጃው ገብቷል! ID: ", docRef.id);
-        return docRef.id;
-      } catch (e) { console.error("ስህተት:", e); }
-    }
-  }
-
-  if (!window.readAllData) {
-    window.readAllData = async function(collectionName) {
-      try {
-        const querySnapshot = await getDocs(collection(db, collectionName));
-        let dataList = [];
-        querySnapshot.forEach((doc) => dataList.push({ id: doc.id, ...doc.data() }));
-        return dataList;
-      } catch (e) { console.error("ስህተት:", e); }
-    } 
+        const SECURITY_CREDENTIAL_KEY = "bgsssadmin12345678.";  
 const firebaseConfig = {
   apiKey: "AIzaSyBBzQujoC2tiMEPYF2RgDIm2wYtpkeyssc",
   authDomain: "bullen-highschool.firebaseapp.com",
@@ -682,6 +621,61 @@ const firebaseConfig = {
   messagingSenderId: "227097046925",
   appId: "1:227097046925:web:3431c1c56c56d775a097c4"
 };
-      </script> 
-</body>
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        const form = document.getElementById('broadcastForm');
+        const inputField = document.getElementById('announcementInput');
+        const passwordField = document.getElementById('adminPassword');
+        const bannerScreen = document.getElementById('announcement-screen');
+        const historyBox = document.getElementById('announcementHistory');
+
+        // 🔄 Listen to updates from Firebase Realtime Database
+        database.ref('announcements').on('value', (snapshot) => {
+            const data = snapshot.val();
+            
+            if (data) {
+                // Convert object list to array
+                const list = Object.values(data);
+                
+                // 1. Purely replace the red banner text with the absolute latest entry
+                bannerScreen.innerText = list[list.length - 1];
+
+                // 2. Display all previous announcements sequentially inside the archive log below
+                historyBox.innerHTML = '';
+                [...list].reverse().forEach(text => {
+                    historyBox.innerHTML += `<div class="info-item">🔹 ${text}</div>`;
+                });
+            } else {
+                bannerScreen.innerText = "Latest announcements";
+            }
+        });
+
+        // 📤 Push new text string directly into Firebase Cloud Node
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const newText = inputField.value.trim();
+            const password = passwordField.value;
+
+            // Administrative password logic evaluation (Change "bullen123" to any preference)
+            if (password === "bgsssadmin12345678.") {
+                
+                database.ref('announcements').push(newText)
+                .then(() => {
+                    inputField.value = '';
+                    passwordField.value = '';
+                    alert("Announcement broadcasted successfully via Firebase!");
+                })
+                .catch((error) => {
+                    alert("Execution error occurred: " + error.message);
+                });
+
+            } else {
+                alert("Incorrect administrative password access denied!");
+            }
+        });
+    </script>
+  </body>
 </html>
