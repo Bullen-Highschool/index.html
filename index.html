@@ -30,7 +30,7 @@
         /* Navigation Bar */
         header {
             background-color: var(--primary);
-            position: sticky;
+            position:  sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -370,8 +370,7 @@
 </section> 
 
 
-        
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -609,7 +608,10 @@
     </footer>
 
     <!-- INTERACTIVE DOM CONTROLLER ENGINE -->
-    <script>
+  <script type="module">
+        import { initializeApp } from "https://gstatic.com";
+        import { getDatabase, ref, push, onValue } from "https://gstatic.com";
+
         // System Master Password Mapping Configuration
         const SECURITY_CREDENTIAL_KEY = "bgsssadmin12345678.";  
 const firebaseConfig = {
